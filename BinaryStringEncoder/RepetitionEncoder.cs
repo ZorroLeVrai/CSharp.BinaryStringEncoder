@@ -36,7 +36,7 @@ namespace BinaryStringEncoder
                 if (bit != LastBit)
                 {
                     if (nbRepetition > 0)
-                        outputMessage.Append($":{nbRepetition} ");
+                        AppendRepetition(nbRepetition);
                     outputMessage.Append(bit);
                     nbRepetition = 1;
                 }
@@ -47,9 +47,11 @@ namespace BinaryStringEncoder
 
                 LastBit = bit;
             }
-            outputMessage.Append($":{nbRepetition} ");
+            AppendRepetition(nbRepetition);
 
             return outputMessage.ToString().TrimEnd();
+
+            StringBuilder AppendRepetition(int nbRepetition) => outputMessage.Append($":{nbRepetition} ");
         }
     }
 }
